@@ -17,16 +17,16 @@ function login(){
             if (usuario.login == login && usuario.senha == senha) {
                 mensagem = "Parabéns, você logou!";
                 localStorage.setItem("logado", JSON.stringify(usuario));
-                window.location.href = "./logged/home.html";
+                Swal.fire(mensagem).then(function() {
+                    window.location = "./logged/home.html";
+                });
                 break;
             }
         }
-
     }
-    Swal.fire(mensagem);
+    
 }
 function register(){
-
     if(campoNovaSenha.value.length < 8 && campoNovaSenha.value.length < 8){
         Swal.fire({
             icon: 'error',
@@ -49,8 +49,9 @@ function register(){
                 'Good job!',
                 'You clicked the button!',
                 'success'
-            )
-             window.location.href = "index.html"
+            ).then(function() {
+                window.location = "index.html";
+            });
         } else {
             Swal.fire({
                 icon: 'error',
@@ -59,4 +60,8 @@ function register(){
               })
         }
     }
+}
+
+function novaNota(){
+
 }
