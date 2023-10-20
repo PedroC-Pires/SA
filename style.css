@@ -14,9 +14,9 @@ body{
     margin: auto;
     text-align: center;
     position: relative;
-    top: 250px;
+    top: 80px;
     width: 340px;
-    height: 360px;
+    height: auto;
     padding-top: 20px;
     box-shadow: 5px 5px 12px #888, -5px -5px 12px #fff;
     border-radius: 12px;
@@ -39,7 +39,7 @@ h1{
     text-align: center;
     outline: none;
     font-size: 17px;
-    color: #999;
+    color: #666;
     animation: ease-in-out;
     transition: 0.5s;
     margin-bottom: 30px;
@@ -48,7 +48,7 @@ h1{
 }
 
 .inputlogin::placeholder{
-    color: #bbb;
+    color: #a6a6a6;
     transition: 250ms;
 }
 
@@ -84,4 +84,21 @@ a:link{
 
 a:visited{
     color: #999;
+}
+
+textarea{
+    width: 300px;
+    height: 50px;
+    border: none;
+    resize: none;
+    box-shadow: 5px 5px 12px #888, -5px -5px 12px #fff;
+    animation: ease-in-out;
+    transition: 0.5s;
+    border-radius: 12px;
+    padding-top: 10px;
+}
+
+#campoAnotacao:focus{
+    height: 200px;
+    outline: none;
 }

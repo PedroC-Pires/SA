@@ -10,11 +10,14 @@
 <body>
     <div class="content">
         <h1>CADASTRO</h1>
-        <input type="password" class="inputlogin" placeholder="Insira sua senha"><br>
-        <input type="password" class="inputlogin" placeholder="Insira sua senha"><br>
-        <input type="password" class="inputlogin" placeholder="Repita sua senha"><br>
-        <button class="botaologin">Cadastrar</button><br>
+        <input type="text" class="inputlogin" id="novoLogin" placeholder="Insira seu login"><br>
+        <input type="password" class="inputlogin" id="novaSenha" placeholder="Insira sua senha"><br>
+        <input type="password" class="inputlogin" id="repSenha" placeholder="Repita sua senha"><br>
+        <button class="botaologin" onclick="register();">Cadastrar</button><br>
         <a href="index.html">Já tenho login</a>
     </div>
 </body>
+<script src="script.js"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
