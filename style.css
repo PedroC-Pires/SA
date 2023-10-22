@@ -98,7 +98,12 @@ textarea{
     padding-top: 10px;
 }
 
-#campoAnotacao:focus{
-    height: 200px;
+.campoAnotacao{
     outline: none;
+    overflow: hidden;
+}
+
+.campoAnotacao:hover{
+    height: 200px;
+    overflow: initial;
 }
