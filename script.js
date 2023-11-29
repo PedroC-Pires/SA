@@ -4,22 +4,22 @@ const campoSenha = document.getElementById("password");
 const campoNovoLogin = document.getElementById("novoLogin");
 const campoNovaSenha = document.getElementById("novaSenha");
 const campoRepSenha = document.getElementById("repSenha");
+const campoNota = document.getElementById("campoAnotacao");
 let arrdb = JSON.parse(localStorage.getItem("bancoDeDados"))
 let arrlogado = JSON.parse(localStorage.getItem("logado"))
 let temp = []
 
-//Exibe as anotações na página Ver Anotações
-let verNota = JSON.parse(localStorage.getItem("bancoDeDados"))
-for (var i = 0; i < arrdb.length; i++) {
-    if (arrdb[i].login == arrlogado.login && arrdb[i].senha == arrlogado.senha) {
-        tempVerNota = arrdb[i].notes
+//Exibe as anotações na página Anotações
+let notaAtual = campoNota.value //Define a let notaAtual igual ao valor do campo 'campoAnotacao'
+arrdb = JSON.parse(localStorage.getItem("bancoDeDados")) //Define a let arrdb como igual a array dentro do item no localstorage chamado bancoDeDados
+arrlogado = JSON.parse(localStorage.getItem("logado")) //Define a let arrlogado como igual ao objeto dentro do item no chamado logado
+
+for (var i = 0; i < arrdb.length; i++) { //Verifica cada usuario em arrdb e salva o numero da verificação na variavel i
+    if (arrdb[i].login == arrlogado.login && arrdb[i].senha == arrlogado.senha) { //Compara cada login e senha de arrdb[i] para encontrar o usuário logado em arrdb
+        campoNota.value = arrdb[i].notes;
     }
+    
 }
-tempVerNota = JSON.stringify(tempVerNota)
-tempVerNota = tempVerNota.replace('["', "")
-tempVerNota = tempVerNota.replace('"]', "")
-tempVerNota = tempVerNota.replaceAll('","', "\n\n")
-document.getElementById("listaAnotacoes").value = tempVerNota
 
 //Cria a função Login()
 function login(){
@@ -56,7 +56,7 @@ function register(){
             const usuario = { //Define que o objeto 'usuario' contem o login e senha digitados, além de criar o item 'notes' que será utilizado para as anotações mais tarde
                 login: campoNovoLogin.value,
                 senha: campoNovaSenha.value,
-                notes: []
+                notes: ""
             };
             let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados")); //Define a let bancoDeDados igual ao item bancoDeDados no localstorage
             if (bancoDeDados == null) {
@@ -79,29 +79,24 @@ function register(){
     }
 }
 //Cria a função novaNota
-function novaNota(){
-    let notaAtual = document.getElementById("campoAnotacao").value //Define a let notaAtual igual ao valor do campo 'campoAnotacao'
+function salvarNota(){
+    let notaAtual = campoNota.value //Define a let notaAtual igual ao valor do campo 'campoAnotacao'
     arrdb = JSON.parse(localStorage.getItem("bancoDeDados")) //Define a let arrdb como igual a array dentro do item no localstorage chamado bancoDeDados
     arrlogado = JSON.parse(localStorage.getItem("logado")) //Define a let arrlogado como igual ao objeto dentro do item no chamado logado
 
     for (var i = 0; i < arrdb.length; i++) { //Verifica cada usuario em arrdb e salva o numero da verificação na variavel i
         if (arrdb[i].login == arrlogado.login && arrdb[i].senha == arrlogado.senha) { //Compara cada login e senha de arrdb[i] para encontrar o usuário logado em arrdb
-            let tempobj = arrdb[i] //Define a let tempobj como o objeto [i] da array arrdb (Poderia ser feito com menos variaveis, optei por fazer assim para facilitar a organização do código separando cada coisa em uma variavel)
-            let tempnote = tempobj.notes //Define a let tempnote como o atributo notes do objeto [i]
-            tempnote.push(notaAtual) //Adiciona à let tempnote o valor da nota atual do usuário
-            tempobj.notes = tempnote //Substitui o atributo notes do objeto tempobj pelo atributo com a notaAtual
-            arrdb.splice(i,1) //Deleta o abjeto desatualizado da array arrdb para substituilo pelo tempobj mais tarde
-            arrdb.push(tempobj) //Adiciona o abjeto tempobj na array arrdb
+            arrdb[i].notes = campoNota.value;
         }
-        Swal.fire({ //Exibe uma mensagem de anotação salva para o usuario, a mensagem é fechada automáticamente em 1000 milisegundos
-            position: 'center',
-            icon: 'success',
-            title: 'Anotação salva!',
-            showConfirmButton: false,
-            timer: 1000
-          })
-        localStorage.setItem("bancoDeDados", JSON.stringify(arrdb)) //Salva as anotações no localstorage
     }
+    Swal.fire({ //Exibe uma mensagem de anotação salva para o usuario, a mensagem é fechada automáticamente em 1000 milisegundos
+        position: 'center',
+        icon: 'success',
+        title: 'Anotação salva!',
+        showConfirmButton: false,
+        timer: 1000
+      })
+    localStorage.setItem("bancoDeDados", JSON.stringify(arrdb)) //Salva as anotações no localstorage
 }
 
 function deslogar(){
