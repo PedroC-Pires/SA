@@ -54,6 +54,12 @@ input{
     z-index: 0;
 }
 
+input:focus::placeholder{
+    color: #00000000;
+    animation: ease-in-out;
+    transition: 350ms;
+}
+
 button{
     width: 80%;
     padding-left: 10%;
