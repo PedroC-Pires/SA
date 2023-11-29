@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de alunos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <dialog id="modal1">
+        <div class="container px-4">
+            <h1>Cadastro de alunos</h1>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+                <label for="nome">Nome</label>
+            </div>
+            <div class="form-floating mb-3">
+                <select class="form-select" id="conceito" aria-label="Example select with button addon" required>
+                    <option value="0" selected>Selecione</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select>
+                <label for="conceito">Conceito</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="frequencia" placeholder="Frequência" min="0" max="100" required>
+                <label for="frequencia">Frequência</label>
+            </div>
+            <div class="divButtons">
+                <button type="button" onclick="modal1.close();" class="btn btn-outline-danger">Fechar</button>
+                <button type="button" onclick="funcCad();" class="btn btn-outline-success">Cadastrar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="modal2">
+        <div class="container px-4 text-center">
+            <h1>Sobre</h1>
+            <div class="form-floating">
+                <textarea class="form-control mb-3 mt-2" placeholder="Sobre" id="sobre" style="height: 340px; width: 300px; resize: none;"></textarea>
+                <label for="sobre">Sobre</label>
+            </div>
+            <div class="divButtons">
+                <button type="button" onclick="excluirMatricula();" class="btn btn-outline-danger">Excluir</button>
+                <button type="button" onclick="salvarSobre();" class="btn btn-outline-success">Salvar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center container-md">
+                <h1>Sistema de cadastro de alunos</h1>
+                <button type="button" onclick="modal1.showModal();" class="btn btn-outline-dark mb-3 mt-2">Cadastrar novo aluno</button>
+                <a href="./home.html"><button type="button" class="btn btn-outline-dark mb-3 mt-2">Voltar</button></a>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Matricula</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Conceito</th>
+                            <th scope="col">Frequência</th>
+                            <th scope="col">Aprovado</th>
+                            <th scope="col">Sobre</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tabela">
+                        <tr>
+                            
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="./script/script.js"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.jsdelivr.net/npm/ramda@0.29.1/dist/ramda.min.js"></script>
+</html>

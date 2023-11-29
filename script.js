@@ -4,22 +4,8 @@ const campoSenha = document.getElementById("password");
 const campoNovoLogin = document.getElementById("novoLogin");
 const campoNovaSenha = document.getElementById("novaSenha");
 const campoRepSenha = document.getElementById("repSenha");
-const campoNota = document.getElementById("campoAnotacao");
-let arrdb = JSON.parse(localStorage.getItem("bancoDeDados"))
-let arrlogado = JSON.parse(localStorage.getItem("logado"))
-let temp = []
 
-//Exibe as anotações na página Anotações
-let notaAtual = campoNota.value //Define a let notaAtual igual ao valor do campo 'campoAnotacao'
-arrdb = JSON.parse(localStorage.getItem("bancoDeDados")) //Define a let arrdb como igual a array dentro do item no localstorage chamado bancoDeDados
-arrlogado = JSON.parse(localStorage.getItem("logado")) //Define a let arrlogado como igual ao objeto dentro do item no chamado logado
-
-for (var i = 0; i < arrdb.length; i++) { //Verifica cada usuario em arrdb e salva o numero da verificação na variavel i
-    if (arrdb[i].login == arrlogado.login && arrdb[i].senha == arrlogado.senha) { //Compara cada login e senha de arrdb[i] para encontrar o usuário logado em arrdb
-        campoNota.value = arrdb[i].notes;
-    }
-    
-}
+document.getElementById("welcome").innerHTML = JSON.parse(localStorage.getItem("logado")).login;
 
 //Cria a função Login()
 function login(){
@@ -53,10 +39,9 @@ function register(){
                 text: 'Sua senha deve conter no mínimo 8 caracteres! Por favor tente novamente.',
               }) //Se não forem exibe a mensagem 'Sua senha deve conter no mínimo 8 caracteres! Por favor tente novamente.'
         }else{   //Se forem iguas e maiores ou igual a 8
-            const usuario = { //Define que o objeto 'usuario' contem o login e senha digitados, além de criar o item 'notes' que será utilizado para as anotações mais tarde
+            const usuario = { //Define que o objeto 'usuario' contem o login e senha digitados
                 login: campoNovoLogin.value,
                 senha: campoNovaSenha.value,
-                notes: ""
             };
             let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados")); //Define a let bancoDeDados igual ao item bancoDeDados no localstorage
             if (bancoDeDados == null) {
@@ -77,30 +62,6 @@ function register(){
             text: 'As senhas devem ser iguais, por favor tente novamente.',
         })
     }
-}
-//Cria a função novaNota
-function salvarNota(){
-    let notaAtual = campoNota.value //Define a let notaAtual igual ao valor do campo 'campoAnotacao'
-    arrdb = JSON.parse(localStorage.getItem("bancoDeDados")) //Define a let arrdb como igual a array dentro do item no localstorage chamado bancoDeDados
-    arrlogado = JSON.parse(localStorage.getItem("logado")) //Define a let arrlogado como igual ao objeto dentro do item no chamado logado
-
-    for (var i = 0; i < arrdb.length; i++) { //Verifica cada usuario em arrdb e salva o numero da verificação na variavel i
-        if (arrdb[i].login == arrlogado.login && arrdb[i].senha == arrlogado.senha) { //Compara cada login e senha de arrdb[i] para encontrar o usuário logado em arrdb
-            arrdb[i].notes = campoNota.value;
-        }
-    }
-    Swal.fire({ //Exibe uma mensagem de anotação salva para o usuario, a mensagem é fechada automáticamente em 1000 milisegundos
-        position: 'center',
-        icon: 'success',
-        title: 'Anotação salva!',
-        showConfirmButton: false,
-        timer: 1000
-      })
-    localStorage.setItem("bancoDeDados", JSON.stringify(arrdb)) //Salva as anotações no localstorage
-}
-
-function deslogar(){
-    localStorage.removeItem("logado")
 }
 
 /*

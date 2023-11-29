@@ -6,13 +6,10 @@
 
 body{
     background-color: #eaf1f6;
-    background-image: url("https://media-private.canva.com/MN9to/MADZKNMN9to/2/s.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWF6QO3UH4PAAJ6Q%2F20231017%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231017T201109Z&X-Amz-Expires=79569&X-Amz-Signature=683a18e483a7b5421ff9241068c846cd8668393a21b13ea19d949af3b10348a8&X-Amz-SignedHeaders=host&response-expires=Wed%2C%2018%20Oct%202023%2018%3A17%3A18%20GMT");
     background-repeat: no-repeat;
     background-size: 30%;
     background-position: right top;
 }
-
-
 
 .content{
     margin: auto;
@@ -25,58 +22,43 @@ body{
     border-radius: 50px;
     background: #e0e0e0;
     box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+                -20px -20px 60px #ffffff;
     padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
 }
 
 h1{
     font-size: 2.5rem;
     color: #38497B;
+    z-index: 1;
 }
 
-.inputlogin{
-    width: 200px;
-    height: 36px;
+input{
+    width: 80%;
+    margin-left: 10%;
+    height: 48px;
     border: none;
     border-radius: 18px;
     background: #eeeeee;
     box-shadow:  20px 20px 60px #cacaca,
-             -20px -20px 60px #ffffff;
+                -20px -20px 60px #ffffff;
     text-align: center;
     outline: none;
     font-size: 17px;
     color: #666;
     animation: ease-in-out;
     transition: 0.5s;
-    margin-bottom: 30px;
     font-weight: 600;
+    z-index: 0;
 }
 
-.inputlogin::placeholder{
-    color: #a6a6a6;
-    transition: 250ms;
-}
-
-.inputlogin:focus::placeholder{
-    color: #00000000;
-}
-
-.botaologin{
-    width: 200px;
-    height: 36px;
-    border: none;
-    border-radius: 18px;
-    background: #eeeeee;
-    box-shadow:  20px 20px 60px #cacaca,
-             -20px -20px 60px #ffffff;
-    text-align: center;
-    outline: none;
-    font-size: 20px;
-    color: #38497b;
-    animation: ease-in-out;
-    transition: 0.5s;
-    margin-bottom: 30px;
-    font-weight: 900;
+button{
+    width: 80%;
+    padding-left: 10%;
+    margin: auto;
+    z-index: 1;
 }
 
 a{
@@ -105,14 +87,4 @@ textarea{
     border-radius: 12px;
     padding-top: 10px;
     transition-delay:100ms;
-}
-
-.campoAnotacao{
-    outline: none;
-    overflow: hidden;
-}
-
-.campoAnotacao:focus{
-    height: 150px;
-    overflow: initial;
 }
