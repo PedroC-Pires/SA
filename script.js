@@ -117,10 +117,6 @@ function deslogar(){
         Tyler       Front-end/Desing
     Turma:
         2B - 2023
-    Versão do documento: 1.0
+    Versão do documento: 1.1
     Data e hora de conclusão do documento: 22/10/2023 - 00:17
-
-    ps:
-    Caso deseje utilizar este código para apresentá-lo para outras turmas, 
-    por favor converse com pelo menos um dos integrantes do grupo, grato desde já - o cara do back-end.
 */
